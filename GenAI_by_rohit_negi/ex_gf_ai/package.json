@@ -1,7 +1,7 @@
 {
-  "name": "dsa_ai",
+  "name": "ex_gf_ai",
   "version": "1.0.0",
-  "main": "dsa.js",
+  "main": "ex.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,10 +1,14 @@
-import { GoogleGenAI } from "@google/genai";
 import readlineSync from "readline-sync";
+import { configDotenv } from "dotenv";
+
+import { GoogleGenAI } from "@google/genai";
+
+configDotenv({ path: "../../.env" });
 
 const history = [];
 
 const ai = new GoogleGenAI({
-  apiKey: "AIzaSyDE6dk9Laoem0YUzOztnI1a8Tuw7dSdGVk",
+  apiKey: process.env.AI_KEY,
 });
 
 async function chatting(question) {
