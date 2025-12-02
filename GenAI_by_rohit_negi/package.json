@@ -1,0 +1,17 @@
+{
+  "name": "genai_by_rohit_negi",
+  "version": "1.0.0",
+  "main": "LLM.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "readline-sync": "^1.4.10"
+  }
+}

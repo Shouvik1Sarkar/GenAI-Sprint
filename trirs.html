@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Chat App</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .chat-container {
+        width: 400px;
+        height: 600px;
+        background: #fff;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+      }
+
+      .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 8px;
+        max-width: 80%;
+      }
+
+      .user {
+        background: #d1e7ff;
+        align-self: flex-end;
+      }
+
+      .bot {
+        background: #e8e8e8;
+        align-self: flex-start;
+      }
+
+      .input-area {
+        padding: 10px;
+        background: #fafafa;
+        display: flex;
+        gap: 10px;
+      }
+
+      input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        background: #0084ff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #006fe0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="chat-container">
+      <div class="messages" id="messages"></div>
+
+      <div class="input-area">
+        <input id="userInput" type="text" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script type="module">
+      import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+      const genAI = new GoogleGenerativeAI("YOUR_API_KEY_HERE");
+
+      async function sendMessage() {
+        const input = document.getElementById("userInput");
+        const msg = input.value.trim();
+        if (!msg) return;
+
+        showMessage(msg, "user");
+        input.value = "";
+
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+        const result = await model.generateContent(msg);
+        const reply = result.response.text();
+
+        showMessage(reply, "bot");
+      }
+
+      function showMessage(text, sender) {
+        const messages = document.getElementById("messages");
+        const div = document.createElement("div");
+        div.className = `message ${sender}`;
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+      }
+    </script>
+  </body>
+</html>
