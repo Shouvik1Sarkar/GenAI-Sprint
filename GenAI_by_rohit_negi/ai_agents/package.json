@@ -1,7 +1,7 @@
 {
-  "name": "ex_gf_ai",
+  "name": "ai_agents",
   "version": "1.0.0",
-  "main": "ex.js",
+  "main": "ai_agent.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
