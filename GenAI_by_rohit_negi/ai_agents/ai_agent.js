@@ -123,9 +123,9 @@ async function chatting(question) {
 
     try {
       //   console.log("---------------", response);
-      console.log("---------------", response.functionCalls);
       if (response.functionCalls && response.functionCalls.length > 0) {
-        console.log("////////////////////////////////////////");
+        console.log(response.functionCalls);
+        console.log("|--------------------------------------|");
         const { name, args } = response.functionCalls[0];
 
         const functionCall = available_functions[name];
@@ -155,19 +155,25 @@ async function chatting(question) {
             },
           ],
         });
-        console.log("RESULT: ", result);
+        console.log(response);
+        console.log("|||||======>>>", response.text);
+        console.log(result[i].current_price);
         i += 1;
       } else {
         console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-        if (i > 0) {
-          console.log("yes it is more than one");
-          i = 0;
-          return;
-        }
+        // if (i > 0) {
+        //   console.log("yes it is more than one");
+        //   i = 0;
+        // }
+        console.log("########========:>>> ", response);
+        console.log("########========:>>> ", response.text);
+
         history.push({
           role: "model",
           parts: [{ text: response.text }],
         });
+
+        console.log("----", response);
         console.log("----", response.text);
         break;
       }
