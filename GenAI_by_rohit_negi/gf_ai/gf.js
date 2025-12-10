@@ -64,8 +64,8 @@ async function chatting(question) {
 }
 
 async function main() {
-  const question = readlineSync.question("Shouvik---> ");
-  await chatting(question);
+  const question = readlineSync.question("Shouvik---> "); // User Input
+  await chatting(question); // Input the text
   main();
 }
 

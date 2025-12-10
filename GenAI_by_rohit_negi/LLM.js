@@ -1,6 +1,6 @@
 //AIzaSyDE6dk9Laoem0YUzOztnI1a8Tuw7dSdGVk
 
-import readlineSync from "readline-sync";
+import readlineSync, { question } from "readline-sync";
 
 import { configDotenv } from "dotenv";
 
@@ -24,7 +24,7 @@ async function chatting(prompt) {
     contents: history,
   });
   history.push({
-    role: "user",
+    role: "model",
     parts: [{ text: response.text }],
   });
   console.log("AI assistant--->", response.text);
