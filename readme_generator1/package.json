@@ -1,7 +1,7 @@
 {
   "name": "readme_generator1",
   "version": "1.0.0",
-  "description": "",
+  "description": "import fs from \"fs\"; import path from \"path\"; import { exec } from \"child_process\"; import { promisify } from \"util\"; import prompts from \"prompts\"; import { Console } from \"console\";",
   "main": "readme.js",
   "type": "module",
   "scripts": {
